@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".HomePage">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addimage"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/custom_button"
+        android:text="ADD IMages"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addpdf"
+        android:layout_marginTop="300dp"
+        android:background="@drawable/custom_button"
+        android:text="ADD pdf"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proceed to Home Page"
+        android:textSize="22sp"
+        android:layout_below="@+id/addpdf"
+        android:fontFamily="casual"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/gradient"
+        android:gravity="center"
+        android:onClick="moveToImageListPage"/>
+
+</RelativeLayout>

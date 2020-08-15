@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="gradient">#ff1493</color>
+    <color name="gradient2">#8432df</color>
+    <drawable name="edit_text">@drawable/button_gradient</drawable>
+</resources>
