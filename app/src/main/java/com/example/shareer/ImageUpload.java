@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,7 +35,7 @@ public class ImageUpload extends AppCompatActivity {
 
     private  static  final int PICK_IMAGE_REQUEST=1;
     private Button mButtonChooseImage;
-    private  Button mButtonUpload;
+    private Button mButtonUpload;
     private TextView mTextViewShowUpload;
     private EditText mEditTextFileName,mDescription;
     private ProgressBar progressBar;
@@ -62,8 +63,10 @@ public class ImageUpload extends AppCompatActivity {
         mDescription=findViewById(R.id.mdesc);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String userid = firebaseUser.getUid();
         storageReference= FirebaseStorage.getInstance().getReference("Uploads");
-        databaseReference= FirebaseDatabase.getInstance().getReference("Uploads");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child("Uploads");
 
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
@@ -141,8 +144,9 @@ public class ImageUpload extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            ImageUploadHandler upload=new ImageUploadHandler(mEditTextFileName.getText().toString().trim(),uri.toString(),mDescription.getText().toString());
                             String uploadId=databaseReference.push().getKey();
+                            ImageUploadHandler upload=new ImageUploadHandler(mEditTextFileName.getText().toString().trim(),uri.toString(),mDescription.getText().toString(),uploadId);
+
                             databaseReference.child(uploadId).setValue(upload);
                             Toast.makeText(ImageUpload.this, "Upload Successful", Toast.LENGTH_LONG).show();
                         }

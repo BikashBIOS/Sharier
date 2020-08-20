@@ -4,12 +4,13 @@ public class ImageUploadHandler {
     private String mName;
     private String mImageUri;
     private String mDesc;
+    private String mKey;
 
     public ImageUploadHandler()
     {
 
     }
-    public ImageUploadHandler(String mName, String mImageUri,String mDesc) {
+    public ImageUploadHandler(String mName, String mImageUri,String mDesc, String mKey) {
 
         if (mName.trim().equals(""))
         {
@@ -18,6 +19,7 @@ public class ImageUploadHandler {
         this.mName = mName;
         this.mImageUri = mImageUri;
         this.mDesc=mDesc;
+        this.mKey=mKey;
     }
 
 
@@ -45,4 +47,13 @@ public class ImageUploadHandler {
     public void setmDesc(String mDesc) {
         this.mDesc = mDesc;
     }
+
+    public String getmKey() {
+        return mKey;
+    }
+
+    public void setmKey(String mKey) {
+        this.mKey = mKey;
+    }
+
 }

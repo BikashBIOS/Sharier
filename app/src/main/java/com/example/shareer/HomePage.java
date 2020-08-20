@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.shareer.User.UsersList;
+
 public class HomePage extends AppCompatActivity {
 
     Button AddPdf, AddImage;
@@ -36,6 +38,6 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void moveToImageListPage(View view) {
-        startActivity(new Intent(HomePage.this, ImageList.class));
+        startActivity(new Intent(HomePage.this, UsersList.class));
     }
 }

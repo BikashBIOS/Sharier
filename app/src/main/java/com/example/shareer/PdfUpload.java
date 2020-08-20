@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +27,7 @@ public class PdfUpload extends AppCompatActivity {
 
     Button btn_upload,viewPDF;
     EditText editPdfName;
+    private FirebaseAuth firebaseAuth;
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -38,8 +41,12 @@ public class PdfUpload extends AppCompatActivity {
         btn_upload=findViewById(R.id.upload);
         viewPDF=findViewById(R.id.view);
         editPdfName=findViewById(R.id.name);
+        firebaseAuth=FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String userid = firebaseUser.getUid();
+
         storageReference= FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("UploadPDF");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child("UploadPDF");
 
         btn_upload.setOnClickListener(new View.OnClickListener() {
             @Override

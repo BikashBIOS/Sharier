@@ -48,7 +48,7 @@ public class ImageList extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(ImageList.this));
         mRecyclerView.setHasFixedSize(true);
         mUpload=new ArrayList<>();
-        databaseReference= FirebaseDatabase.getInstance().getReference("Uploads");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child("Uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,9 +81,9 @@ public class ImageList extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.menuLogout:
-                FirebaseAuth.getInstance().signOut();
-                finish();
+                mAuth.signOut();
                 startActivity(new Intent(ImageList.this,MainActivity.class));
+                finish();
                 break;
             case R.id.viewpdfs:
                 startActivity(new Intent(ImageList.this,ListofPdf.class));

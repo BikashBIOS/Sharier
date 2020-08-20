@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,13 +24,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class RegisterClient extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     DatabaseReference reference;
     Button registerClient;
-    TextInputLayout clientname,clientemail,clientpassword,clientcpassword;
+    TextInputLayout clientname, clientemail, clientpassword, clientcpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +39,23 @@ public class RegisterClient extends AppCompatActivity {
         setContentView(R.layout.activity_register_client);
 
         mAuth = FirebaseAuth.getInstance();
-        registerClient=findViewById(R.id.clientregister);
-        clientname=findViewById(R.id.ed_clientname);
-        clientemail=findViewById(R.id.ed_clientemail);
-        clientpassword=findViewById(R.id.ed_clientpassword);
-        clientcpassword=findViewById(R.id.ed_clientcpassword);
+        registerClient = findViewById(R.id.clientregister);
+        clientname = findViewById(R.id.ed_clientname);
+        clientemail = findViewById(R.id.ed_clientemail);
+        clientpassword = findViewById(R.id.ed_clientpassword);
+        clientcpassword = findViewById(R.id.ed_clientcpassword);
 
         registerClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validateClientName() | !validateClientEmail() | !validatePasswordClient()){
+                if (!validateClientName() | !validateClientEmail() | !validatePasswordClient()) {
                     Toast.makeText(RegisterClient.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    String input_ClientName=clientname.getEditText().getText().toString();
-                    String input_ClientEmail=clientemail.getEditText().getText().toString().trim();
-                    String input_ClientPassword=clientpassword.getEditText().getText().toString();
+                } else {
+                    String input_ClientName = clientname.getEditText().getText().toString();
+                    String input_ClientEmail = clientemail.getEditText().getText().toString().trim();
+                    String input_ClientPassword = clientpassword.getEditText().getText().toString();
 
-                    clientRegister(input_ClientName,input_ClientEmail,input_ClientPassword);
+                    clientRegister(input_ClientName, input_ClientEmail, input_ClientPassword);
                 }
             }
         });
@@ -75,7 +76,7 @@ public class RegisterClient extends AppCompatActivity {
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             assert firebaseUser != null;
                             String userid = firebaseUser.getUid();
-                            String typeClient="Client";
+                            String typeClient = "Client";
 
                             reference = FirebaseDatabase.getInstance().getReference("Clients").child(userid);
 
@@ -107,37 +108,28 @@ public class RegisterClient extends AppCompatActivity {
                 });
     }
 
-    private boolean validateClientName(){
-        String txt_clientname=clientname.getEditText().getText().toString().trim();
-        if (txt_clientname.isEmpty()){
+    private boolean validateClientName() {
+        String txt_clientname = clientname.getEditText().getText().toString().trim();
+        if (txt_clientname.isEmpty()) {
             clientname.setError("Name can't be Empty");
             return false;
-        }
-        else if (txt_clientname.length()>16){
+        } else if (txt_clientname.length() > 16) {
             clientname.setError("User Name too Long");
             return false;
-        }
-        else {
+        } else {
             clientname.setError(null);
             return true;
         }
     }
 
-    private boolean validateClientEmail(){
-        String txt_ClientEmail=clientemail.getEditText().getText().toString().trim();
-        if (txt_ClientEmail.isEmpty()){
-            clientemail.setError("Email can't be Empty");
+    private boolean validateClientEmail() {
+        String txt_ClientEmail = clientemail.getEditText().getText().toString().trim();
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(txt_ClientEmail).matches()) {
+            clientemail.setError("Invalid Email");
+            clientemail.setFocusable(true);
             return false;
-        }
-        else if (!txt_ClientEmail.contains("@")){
-            clientemail.setError("Email should contain @");
-            return false;
-        }
-        else if (!txt_ClientEmail.endsWith(".com")){
-            clientemail.setError("Email should contain .com");
-            return false;
-        }
-        else{
+        } else {
             clientemail.setError(null);
             return true;
         }

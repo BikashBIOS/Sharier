@@ -85,6 +85,10 @@ public class RegisterUser extends AppCompatActivity {
                             hashMap.put("Password", userPassword);
                             hashMap.put("Type", typeUser);
 
+                            ModelUser modelUser=new ModelUser(userName, userEmail, userPassword, userid);
+
+                            reference.child(userid).setValue(modelUser);
+
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
