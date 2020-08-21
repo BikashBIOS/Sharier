@@ -1,14 +1,15 @@
-package com.example.shareer;
+package com.example.shareer.ImageHandlerPages;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.strictmode.WebViewMethodCalledOnWrongThreadViolation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.shareer.ItemClickListener;
+import com.example.shareer.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,6 +46,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewerH
             public void onClick(View v) {
                 Intent intent=new Intent(mContext,ImageDetailActivity.class);
                 intent.putExtra("imgKey",uploadCurrent.getmKey());
+                intent.putExtra("DownloadUri", uploadCurrent.getmImageUri());
                 mContext.startActivity(intent);
             }
         });

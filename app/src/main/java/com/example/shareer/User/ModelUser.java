@@ -2,47 +2,47 @@ package com.example.shareer.User;
 
 public class ModelUser {
 
-    String name, email,password, uid;
+    String id, Name, Email,Password;
 
     public ModelUser() {
     }
 
-    public ModelUser(String name, String email, String password, String uid) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.uid = uid;
+    public ModelUser(String id, String name, String email, String password) {
+        this.id = id;
+        Name = name;
+        Email = email;
+        Password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
+        Password = password;
     }
 }

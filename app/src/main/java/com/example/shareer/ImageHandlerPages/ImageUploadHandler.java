@@ -1,4 +1,4 @@
-package com.example.shareer;
+package com.example.shareer.ImageHandlerPages;
 
 public class ImageUploadHandler {
     private String mName;

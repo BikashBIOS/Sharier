@@ -1,11 +1,16 @@
 package com.example.shareer.User;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.shareer.ImageHandlerPages.ImageList;
+import com.example.shareer.ItemClickListener;
+import com.example.shareer.ListofPdfClient;
 import com.example.shareer.R;
 
 import java.util.List;
@@ -17,6 +22,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyHolder>{
 
     Context context;
     List<ModelUser> usersList;
+    SharedPreferences sharedPreferences;
 
     public UsersAdapter(Context context, List<ModelUser> usersList) {
         this.context = context;
@@ -44,7 +50,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(context, ImageList.class);
+                intent.putExtra("imageUid",currentUser.getId());
+                context.startActivity(intent);
             }
         });
     }
@@ -54,14 +62,23 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyHolder>{
         return usersList.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder{
+    class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView mNameUser, mEmailUser;
+        public ItemClickListener listener;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
 
             mNameUser=itemView.findViewById(R.id.usernameTv);
             mEmailUser=itemView.findViewById(R.id.useremailIv);
+        }
+        public void setOnclickListener(ItemClickListener listener){
+            this.listener=listener;
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view,getAdapterPosition(),false);
         }
     }
 }

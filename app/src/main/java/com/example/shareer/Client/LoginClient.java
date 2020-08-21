@@ -10,12 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.shareer.HomePage;
-import com.example.shareer.ImageList;
 import com.example.shareer.MainActivity;
 import com.example.shareer.R;
-import com.example.shareer.User.LoginUser;
-import com.example.shareer.User.RegisterUser;
+import com.example.shareer.User.UsersList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -69,7 +66,7 @@ public class LoginClient extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginClient.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginClient.this, ImageList.class);
+                            Intent intent = new Intent(LoginClient.this, UsersList.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();

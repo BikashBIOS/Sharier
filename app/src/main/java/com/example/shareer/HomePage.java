@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.shareer.User.UsersList;
+import com.example.shareer.ImageHandlerPages.ImageUpload;
+import com.example.shareer.ImageHandlerPages.ListofImagesUser;
 
 public class HomePage extends AppCompatActivity {
 
@@ -38,6 +39,6 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void moveToImageListPage(View view) {
-        startActivity(new Intent(HomePage.this, UsersList.class));
+        startActivity(new Intent(HomePage.this, ListofImagesUser.class));
     }
 }

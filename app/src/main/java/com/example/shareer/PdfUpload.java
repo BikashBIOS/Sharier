@@ -91,9 +91,10 @@ public class PdfUpload extends AppCompatActivity {
                         Task<Uri> uri=taskSnapshot.getStorage().getDownloadUrl();
                         while(!uri.isComplete());
                         Uri url=uri.getResult();
+                        String pdfKey=databaseReference.push().getKey();
 
-                        PdfUploadHandler pdfUploadHandler=new PdfUploadHandler(editPdfName.getText().toString(),url.toString());
-                        databaseReference.child(databaseReference.push().getKey()).setValue(pdfUploadHandler);
+                        PdfUploadHandler pdfUploadHandler=new PdfUploadHandler(editPdfName.getText().toString(),url.toString(),pdfKey);
+                        databaseReference.child(pdfKey).setValue(pdfUploadHandler);
                         Toast.makeText(PdfUpload.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }

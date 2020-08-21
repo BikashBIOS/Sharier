@@ -26,24 +26,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListofPdf extends AppCompatActivity {
+public class ListofPdfClient extends AppCompatActivity {
 
     ListView pdfview;
     DatabaseReference databaseReference;
     List<PdfUploadHandler> uploadPdfs;
     FirebaseUser firebaseUser;
-    String pdfUserId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listof_pdf);
+        setContentView(R.layout.activity_listof_pdf_client);
+
         getSupportActionBar().setTitle("Your PDFs");
 
         pdfview=findViewById(R.id.listview);
         uploadPdfs=new ArrayList<>();
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        pdfUserId=firebaseUser.getUid();
 
         viewAllFiles();
         pdfview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +58,7 @@ public class ListofPdf extends AppCompatActivity {
         });
     }
     private void viewAllFiles() {
-        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(pdfUserId).child("UploadPDF");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("UploadPDF");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
