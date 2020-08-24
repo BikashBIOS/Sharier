@@ -63,7 +63,7 @@ public class MultipleImages extends AppCompatActivity {
         uploadoneImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MultipleImages.this, ImageUpload.class));
+                startActivity(new Intent(MultipleImages.this, FolderList.class));
             }
         });
 
@@ -94,6 +94,8 @@ public class MultipleImages extends AppCompatActivity {
                 else{
                     databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child(editFolderName);
                     StorageReference ImageFolder= FirebaseStorage.getInstance().getReference("Users").child(userid).child(editFolderName);
+                    FolderModel folderModel=new FolderModel(editFolderName);
+                    databaseReference.child(editFolderName).setValue(folderModel);
                     for (upload_count=0;upload_count<imagesList.size();upload_count++){
                         Uri IndividualImage=imagesList.get(upload_count);
                         final StorageReference imageName=ImageFolder.child(IndividualImage.getLastPathSegment());
