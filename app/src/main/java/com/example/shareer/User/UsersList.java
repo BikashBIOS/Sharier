@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.shareer.Client.LoginClient;
+import com.example.shareer.HomePage;
+import com.example.shareer.ImageHandlerPages.ListofImagesUser;
 import com.example.shareer.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -62,6 +66,10 @@ public class UsersList extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(UsersList.this, LoginClient.class));
     }
 }

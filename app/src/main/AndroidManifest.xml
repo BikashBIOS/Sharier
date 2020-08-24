@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListofPdfClient"></activity>
+        <activity android:name=".MultipleImages"></activity>
+        <activity android:name=".ListofPdfClient" />
         <activity android:name=".ImageHandlerPages.ImageDetailUser" />
         <activity android:name=".ImageHandlerPages.ListofImagesUser" />
         <activity android:name=".User.UsersList" />

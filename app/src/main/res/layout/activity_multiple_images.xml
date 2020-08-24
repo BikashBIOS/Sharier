@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MultipleImages">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="upload 1 image"
+        android:id="@+id/upload1imagebtn"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:fontFamily="monospace"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        android:padding="5dp"
+        android:layout_marginTop="100dp"
+        android:elevation="4dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="10dp"
+        android:outlineSpotShadowColor="@color/gradient"
+        android:outlineAmbientShadowColor="@color/gradient2">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:text="Upload Multiple Images"
+        android:textColor="@color/gradient"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editfoldername"
+        app:errorEnabled="true"
+        android:layout_marginTop="80dp"
+        app:boxStrokeColor="@color/gradient2"
+        android:textColorHint="@color/gradient2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_folder"
+            android:drawablePadding="10dp"
+            android:hint="Enter Folder Name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="choose images"
+        android:id="@+id/imageschoosebtn"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:fontFamily="monospace"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="UPLOAD"
+        android:id="@+id/imagesuploadbtn"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/custom_button"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:fontFamily="monospace"/>
+
+        <TextView
+            android:id="@+id/textImageAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="350dp"
+            android:fontFamily="casual"
+            android:text="You have not choosed any Images"
+            android:textColor="@color/gradient"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

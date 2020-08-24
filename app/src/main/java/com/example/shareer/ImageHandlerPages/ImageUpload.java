@@ -66,7 +66,7 @@ public class ImageUpload extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         String userid = firebaseUser.getUid();
-        storageReference= FirebaseStorage.getInstance().getReference("Uploads");
+        storageReference= FirebaseStorage.getInstance().getReference("Users").child("Uploads");
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child("Uploads");
 
 
@@ -174,7 +174,7 @@ public class ImageUpload extends AppCompatActivity {
     }
     private void openImageActivity()
     {
-        Intent intent=new Intent(ImageUpload.this,ImageList.class);
+        Intent intent=new Intent(ImageUpload.this,ListofImagesUser.class);
         startActivity(intent);
     }
 }
