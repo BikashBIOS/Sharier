@@ -52,7 +52,7 @@ public class MultipleImagesList extends AppCompatActivity {
         mIUpload=new ArrayList<>();
         folderId=getIntent().getStringExtra("folderName");
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Multiple").child(folderId);
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Multiple").child(folderId).child("Images");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -16,7 +16,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MultipleImagesAdapter extends RecyclerView.Adapter<MultipleImagesAdapter.ImageViewerHolder> {
+public class MultipleImagesAdapter extends RecyclerView.Adapter<MultipleImagesAdapter.MultipleImageViewerHolder> {
 
     private Context mIContext;
     private List<MultipleImagesHandler> mIUpload;
@@ -29,13 +29,13 @@ public class MultipleImagesAdapter extends RecyclerView.Adapter<MultipleImagesAd
 
     @NonNull
     @Override
-    public MultipleImagesAdapter.ImageViewerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MultipleImagesAdapter.MultipleImageViewerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(mIContext).inflate(R.layout.item_multipleimages,parent,false);
-        return new MultipleImagesAdapter.ImageViewerHolder(v);
+        return new MultipleImagesAdapter.MultipleImageViewerHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MultipleImagesAdapter.ImageViewerHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MultipleImagesAdapter.MultipleImageViewerHolder holder, int position) {
         final MultipleImagesHandler uploadCurrent=mIUpload.get(position);
         holder.textLink.setText(uploadCurrent.getImgLink());
         Picasso.get().load(uploadCurrent.getImgLink()).fit().centerCrop().into(holder.multipleImage);
@@ -47,11 +47,11 @@ public class MultipleImagesAdapter extends RecyclerView.Adapter<MultipleImagesAd
         return mIUpload.size();
     }
 
-    public class ImageViewerHolder extends RecyclerView.ViewHolder
+    public class MultipleImageViewerHolder extends RecyclerView.ViewHolder
     {
         public TextView textLink;
         public ImageView multipleImage;
-        public ImageViewerHolder(@NonNull View itemView) {
+        public MultipleImageViewerHolder(@NonNull View itemView) {
             super(itemView);
 
             textLink=itemView.findViewById(R.id.text_multiple_link);

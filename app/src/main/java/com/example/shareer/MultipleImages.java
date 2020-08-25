@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -42,9 +44,11 @@ public class MultipleImages extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference2;
 
     ArrayList<Uri> imagesList=new ArrayList<Uri>();
     private Uri ImageUri;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +100,7 @@ public class MultipleImages extends AppCompatActivity {
                     StorageReference ImageFolder= FirebaseStorage.getInstance().getReference("Users").child(userid).child(editFolderName);
                     /*FolderModel folderModel=new FolderModel(editFolderName);*/
                     databaseReference.child("Name").setValue(editFolderName);
+                    databaseReference2=FirebaseDatabase.getInstance().getReference("Users").child(userid).child("Multiple").child(editFolderName).child("Images");
 
                     for (upload_count=0;upload_count<imagesList.size();upload_count++){
                         Uri IndividualImage=imagesList.get(upload_count);
@@ -109,11 +114,11 @@ public class MultipleImages extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         String url=String.valueOf(uri);
                                         String imageKey=databaseReference.push().getKey();
-
-                                        HashMap<String,String> hashMap=new HashMap<>();
+                                        /*HashMap<String,String> hashMap=new HashMap<>();
                                         hashMap.put("ImgLink", url);
-                                        hashMap.put("ImgKey", imageKey);
-                                        databaseReference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        hashMap.put("ImgKey", imageKey);*/
+                                        MultipleImagesHandler handler = new MultipleImagesHandler(url, imageKey);
+                                        databaseReference2.child(imageKey).setValue(handler).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 progressDialog.dismiss();
@@ -122,6 +127,15 @@ public class MultipleImages extends AppCompatActivity {
                                                 imagesList.clear();
                                             }
                                         });
+                                        /*databaseReference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                progressDialog.dismiss();
+                                                imageAlert.setText("Images Uploaded Successfully");
+                                                uploadImages.setVisibility(View.GONE);
+                                                imagesList.clear();
+                                            }
+                                        });*/
                                     }
                                 });
                             }
