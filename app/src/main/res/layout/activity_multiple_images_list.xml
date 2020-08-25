@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".FolderList">
+    tools:context=".MultipleImagesList">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/multipleimagesrecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/folderlistrecyclerview"/>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

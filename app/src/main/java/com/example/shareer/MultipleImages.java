@@ -92,10 +92,11 @@ public class MultipleImages extends AppCompatActivity {
                     Toast.makeText(MultipleImages.this, "Please Enter a Folder Name", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child(editFolderName);
+                    databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userid).child("Multiple").child(editFolderName);
                     StorageReference ImageFolder= FirebaseStorage.getInstance().getReference("Users").child(userid).child(editFolderName);
-                    FolderModel folderModel=new FolderModel(editFolderName);
-                    databaseReference.child(editFolderName).setValue(folderModel);
+                    /*FolderModel folderModel=new FolderModel(editFolderName);*/
+                    databaseReference.child("Name").setValue(editFolderName);
+
                     for (upload_count=0;upload_count<imagesList.size();upload_count++){
                         Uri IndividualImage=imagesList.get(upload_count);
                         final StorageReference imageName=ImageFolder.child(IndividualImage.getLastPathSegment());
@@ -107,9 +108,11 @@ public class MultipleImages extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String url=String.valueOf(uri);
+                                        String imageKey=databaseReference.push().getKey();
 
                                         HashMap<String,String> hashMap=new HashMap<>();
                                         hashMap.put("ImgLink", url);
+                                        hashMap.put("ImgKey", imageKey);
                                         databaseReference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -125,8 +128,6 @@ public class MultipleImages extends AppCompatActivity {
                         });
                     }
                 }
-
-
             }
         });
     }

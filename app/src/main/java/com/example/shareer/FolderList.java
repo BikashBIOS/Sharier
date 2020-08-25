@@ -23,7 +23,7 @@ import java.util.List;
 
 public class FolderList extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewFolder;
     FolderAdapter foldersAdapter;
     List<FolderModel> foldersList;
 
@@ -32,13 +32,13 @@ public class FolderList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_folder_list);
 
-        recyclerView=findViewById(R.id.folderlistrecyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(FolderList.this));
-        recyclerView.setHasFixedSize(true);
+        recyclerViewFolder=findViewById(R.id.folderlistrecyclerview);
+        recyclerViewFolder.setLayoutManager(new LinearLayoutManager(FolderList.this));
+        recyclerViewFolder.setHasFixedSize(true);
         foldersList=new ArrayList<>();
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        final DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        final DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Multiple");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,7 +53,7 @@ public class FolderList extends AppCompatActivity {
 
                     }*/
                     foldersAdapter=new FolderAdapter(FolderList.this,foldersList);
-                    recyclerView.setAdapter(foldersAdapter);
+                    recyclerViewFolder.setAdapter(foldersAdapter);
                 }
             }
 

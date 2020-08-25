@@ -23,7 +23,7 @@ public class FolderAdapter  extends RecyclerView.Adapter<FolderAdapter.MyHolder>
     List<FolderModel> foldersList;
     SharedPreferences sharedPreferences;
 
-    public FolderAdapter(Context context, List<FolderModel> foldersListList) {
+    public FolderAdapter(Context context, List<FolderModel> foldersList) {
         this.context = context;
         this.foldersList = foldersList;
     }
@@ -45,7 +45,7 @@ public class FolderAdapter  extends RecyclerView.Adapter<FolderAdapter.MyHolder>
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, FolderList.class);
+                Intent intent=new Intent(context, MultipleImagesList.class);
                 intent.putExtra("folderName",currentFolder.getName());
                 context.startActivity(intent);
             }
@@ -55,7 +55,7 @@ public class FolderAdapter  extends RecyclerView.Adapter<FolderAdapter.MyHolder>
 
     @Override
     public int getItemCount() {
-        return 0;
+        return foldersList.size();
     }
 
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

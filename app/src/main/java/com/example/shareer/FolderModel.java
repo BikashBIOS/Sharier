@@ -7,7 +7,7 @@ public class FolderModel {
     }
 
     public FolderModel(String name) {
-        Name = name;
+        this.Name = name;
     }
 
     public String getName() {

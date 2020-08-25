@@ -2,14 +2,14 @@ package com.example.shareer;
 
 public class MultipleImagesHandler {
 
-    String ImgLink, mIKey;
+    String ImgLink, ImgKey;
 
     public MultipleImagesHandler() {
     }
 
-    public MultipleImagesHandler(String imgLink, String mIKey) {
-        ImgLink = imgLink;
-        this.mIKey = mIKey;
+    public MultipleImagesHandler(String imgLink, String imgKey) {
+        this.ImgLink = imgLink;
+        this.ImgKey = imgKey;
     }
 
     public String getImgLink() {
@@ -20,11 +20,11 @@ public class MultipleImagesHandler {
         ImgLink = imgLink;
     }
 
-    public String getmIKey() {
-        return mIKey;
+    public String getImgKey() {
+        return ImgKey;
     }
 
-    public void setmIKey(String mIKey) {
-        this.mIKey = mIKey;
+    public void setImgKey(String imgKey) {
+        ImgKey = imgKey;
     }
 }

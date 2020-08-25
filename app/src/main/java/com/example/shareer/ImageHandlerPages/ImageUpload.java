@@ -146,8 +146,8 @@ public class ImageUpload extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             String uploadId=databaseReference.push().getKey();
-                            ImageUploadHandler upload=new ImageUploadHandler(mEditTextFileName.getText().toString().trim(),uri.toString(),mDescription.getText().toString(),uploadId);
 
+                            ImageUploadHandler upload=new ImageUploadHandler(mEditTextFileName.getText().toString().trim(),uri.toString(),mDescription.getText().toString(),uploadId);
                             databaseReference.child(uploadId).setValue(upload);
                             Toast.makeText(ImageUpload.this, "Upload Successful", Toast.LENGTH_LONG).show();
                         }

@@ -54,7 +54,7 @@ public class ListofImagesUser extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         database=FirebaseDatabase.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        userId=getIntent().getStringExtra("imageUid");
+        /*userId=getIntent().getStringExtra("imageUid");*/
 
         mRecyclerView=findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(ListofImagesUser.this));
