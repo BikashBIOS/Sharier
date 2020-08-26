@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MultipleImagesList"></activity>
+        <activity android:name=".FolderListClient"></activity>
+        <activity android:name=".MultipleImagesListClient" />
+        <activity android:name=".MultipleImagesList" />
         <activity android:name=".FolderList" />
         <activity android:name=".MultipleImages" />
         <activity android:name=".ListofPdfClient" />

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.shareer.FolderListClient;
 import com.example.shareer.ImageHandlerPages.ImageList;
 import com.example.shareer.ItemClickListener;
 import com.example.shareer.ListofPdfClient;
@@ -50,8 +51,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyHolder>{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, ImageList.class);
-                intent.putExtra("imageUid",currentUser.getId());
+                Intent intent=new Intent(context, FolderListClient.class);
+                intent.putExtra("userUid",currentUser.getId());
                 context.startActivity(intent);
             }
         });
