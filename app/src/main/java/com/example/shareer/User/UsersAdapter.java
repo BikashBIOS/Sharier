@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.shareer.FolderListClient;
-import com.example.shareer.ImageHandlerPages.ImageList;
+import com.example.shareer.MultipleImagesPackage.FolderListClient;
 import com.example.shareer.ItemClickListener;
-import com.example.shareer.ListofPdfClient;
 import com.example.shareer.R;
 
 import java.util.List;

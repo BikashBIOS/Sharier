@@ -170,6 +170,6 @@ public class RegisterUser extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(RegisterUser.this, LoginUser.class));
+        super.onBackPressed();
     }
 }

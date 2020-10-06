@@ -28,7 +28,6 @@
         <ImageView
             android:id="@+id/detailImageView"
             android:layout_below="@id/imgTitle"
-            android:scaleType="fitXY"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"

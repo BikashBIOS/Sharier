@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.shareer.HomePage;
+import com.example.shareer.Layout.MainPage;
 import com.example.shareer.MainActivity;
 import com.example.shareer.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,11 +27,18 @@ public class LoginUser extends AppCompatActivity {
     TextInputLayout useremaillogin, userpasswordlogin;
     Button loginUser;
     FirebaseAuth mAuth;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null){
+            Intent intent=new Intent(LoginUser.this,HomePage.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
@@ -73,7 +81,7 @@ public class LoginUser extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginUser.this, "Login Successfull", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginUser.this, HomePage.class);
+                            Intent intent = new Intent(LoginUser.this, MainPage.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                             finish();
@@ -123,6 +131,6 @@ public class LoginUser extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(LoginUser.this, MainActivity.class));
+        super.onBackPressed();
     }
 }

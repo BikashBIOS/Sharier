@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".MultipleImages">
+    tools:context=".MultipleImagesPackage.MultipleImages">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:id="@+id/cardupload"
         app:cardUseCompatPadding="true"
         android:padding="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:elevation="4dp"
         app:cardElevation="3dp"
         app:cardCornerRadius="10dp"
@@ -31,7 +31,7 @@
         android:fontFamily="monospace"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:text="Upload Images"
         android:textColor="@color/gradient"/>
@@ -42,7 +42,7 @@
                 android:fontFamily="serif-monospace"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:gravity="center"
                 android:text="Note: First give a Folder Name, then Choose Images and then Upload"
                 android:textColor="@color/gradient2"/>

@@ -106,6 +106,6 @@ public class ListofImagesUser extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(ListofImagesUser.this, HomePage.class));
+        super.onBackPressed();
     }
     }

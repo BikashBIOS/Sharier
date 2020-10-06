@@ -117,6 +117,6 @@ public class LoginClient extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(LoginClient.this, MainActivity.class));
+        super.onBackPressed();
     }
 }

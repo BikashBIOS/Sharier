@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".User.RegisterUser">
+    android:padding="5dp"
+    tools:context=".User.RegisterUser"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -26,39 +27,51 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             >
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="REGISTER"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/gradient"
-                android:fontFamily="monospace"
-                />
-            <TextView
-                android:id="@+id/txtsignup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LOGIN"
-                android:fontFamily="serif-monospace"
+                android:text="Create a New Account"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="4dp"
-                android:onClick="moveToLoginUser"/>
+                android:textColor="@android:color/black"
+                android:fontFamily="monospace"
+                />
+
         </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter your Details"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black"
+                android:fontFamily="sans-serif-medium"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learn More"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"
+                />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/ed_username"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             app:boxStrokeColor="@color/gradient"
-            android:textColorHint="@color/gradient2"
             app:errorEnabled="true"
             app:counterMaxLength="16"
             app:counterEnabled="true"
@@ -77,9 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ed_useremail"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:boxStrokeColor="@color/gradient2"
-                android:textColorHint="@color/gradient2"
                 app:errorEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -96,10 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ed_userpassword"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:passwordToggleEnabled="true"
                 app:boxStrokeColor="@color/gradient"
-                android:textColorHint="@color/gradient2"
                 app:errorEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -116,9 +127,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ed_usercpassword"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 app:passwordToggleEnabled="true"
-                android:textColorHint="@color/gradient2"
                 app:boxStrokeColor="@color/gradient2"
                 app:errorEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -132,30 +142,44 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:id="@+id/userregister"
-            android:text="register"
-            android:textColor="@android:color/white"
-            android:background="@drawable/custom_button"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="20sp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Have an Account? Login here"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/gradient"
-                android:fontFamily="cursive"
-                android:layout_marginTop="30dp"
-                android:onClick="moveToLoginUser"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-</ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtsignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have an Account?"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:onClick="moveToLoginUser"/>
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:id="@+id/userregister"
+            android:text="Sign up"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_button_blue"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

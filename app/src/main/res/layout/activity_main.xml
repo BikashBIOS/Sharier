@@ -57,12 +57,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
         android:layout_below="@+id/welcome"
-        android:text="User"
+        android:text="Admin"
         android:fontFamily="sans-serif-condensed"
         android:id="@+id/choiceuser"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        android:background="@drawable/custom_button_pink"/>
+        android:background="@drawable/custom_button_blue"/>
 
     <Button
         android:layout_width="match_parent"
@@ -70,6 +70,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/choiceuser"
         android:text="Client"
+        android:visibility="invisible"
         android:fontFamily="sans-serif-condensed"
         android:id="@+id/choiceclient"
         android:textColor="@android:color/white"

@@ -22,6 +22,8 @@
             android:text="User Name"
             android:textSize="22sp"
             android:textColor="#000"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="5dp"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"/>
@@ -32,6 +34,8 @@
             android:text="User Email"
             android:id="@+id/useremailIv"
             android:textSize="18sp"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10dp"
             android:textColor="#a9a9a9"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"

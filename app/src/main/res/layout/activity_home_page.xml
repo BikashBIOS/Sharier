@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/addimage"
         android:layout_marginTop="200dp"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/custom_button_blue"
         android:text="ADD IMages"
         android:textColor="@android:color/white"
         android:textSize="20sp"
@@ -22,9 +22,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addpdf"
+
         android:layout_marginTop="300dp"
-        android:background="@drawable/custom_button"
-        android:text="ADD pdf"
+        android:background="@drawable/custom_button_blue"
+        android:text="proceed to main page"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:fontFamily="sans-serif-condensed"/>
@@ -32,7 +33,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proceed to Home Page"
+        android:text="View your Uploaded Folders"
         android:textSize="22sp"
         android:layout_below="@+id/addpdf"
         android:fontFamily="casual"

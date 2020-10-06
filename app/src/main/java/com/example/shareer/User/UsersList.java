@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.shareer.Client.LoginClient;
-import com.example.shareer.HomePage;
-import com.example.shareer.ImageHandlerPages.ListofImagesUser;
 import com.example.shareer.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,17 +29,19 @@ public class UsersList extends AppCompatActivity {
     RecyclerView recyclerView;
     UsersAdapter usersAdapter;
     List<ModelUser> usersList;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
-        getSupportActionBar().setTitle("Users List");
+        getSupportActionBar().setTitle("Admins List");
 
         recyclerView=findViewById(R.id.userlistrecyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(UsersList.this));
         recyclerView.setHasFixedSize(true);
         usersList=new ArrayList<>();
+        firebaseAuth=FirebaseAuth.getInstance();
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Users");
@@ -66,6 +69,27 @@ public class UsersList extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menuLogout:
+                firebaseAuth.signOut();
+                startActivity(new Intent(UsersList.this, LoginClient.class));
+                finish();
+                break;
+
+        }
+        return true;
     }
 
     @Override

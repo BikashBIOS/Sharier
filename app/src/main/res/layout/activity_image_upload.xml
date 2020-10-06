@@ -15,7 +15,7 @@
         android:fontFamily="sans-serif-condensed"
         android:textSize="16sp"
         android:textColor="#ffffffff"
-        android:background="@drawable/button_gradient"/>
+        android:background="@drawable/custom_button_blue"/>
 
     <EditText
         android:id="@+id/filename"
@@ -74,7 +74,7 @@
         android:textSize="16sp"
         android:textColor="#ffffffff"
         android:fontFamily="sans-serif-condensed"
-        android:background="@drawable/custom_button"
+        android:background="@drawable/custom_button_blue"
         android:text="UPLOAD" />
 
     <com.google.android.material.textfield.TextInputLayout
