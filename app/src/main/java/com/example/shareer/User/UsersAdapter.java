@@ -51,6 +51,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyHolder>{
             public void onClick(View view) {
                 Intent intent=new Intent(context, FolderListClient.class);
                 intent.putExtra("userUid",currentUser.getId());
+                intent.putExtra("userName", currentUser.getName());
                 context.startActivity(intent);
             }
         });

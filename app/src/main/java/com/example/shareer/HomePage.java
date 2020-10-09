@@ -16,6 +16,7 @@ import com.example.shareer.Layout.MainPage;
 import com.example.shareer.MultipleImagesPackage.FolderList;
 import com.example.shareer.MultipleImagesPackage.MultipleImages;
 import com.example.shareer.User.LoginUser;
+import com.example.shareer.User.UsersList;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomePage extends AppCompatActivity {
@@ -34,7 +35,7 @@ public class HomePage extends AppCompatActivity {
         AddPdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage.this, MainPage.class));
+                startActivity(new Intent(HomePage.this, VideoActivity.class));
             }
         });
 
@@ -47,7 +48,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void moveToImageListPage(View view) {
-        startActivity(new Intent(HomePage.this, ListofImagesUser.class));
+        startActivity(new Intent(HomePage.this, MainPage.class));
     }
 
     @Override
@@ -63,6 +64,9 @@ public class HomePage extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(HomePage.this, LoginUser.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
+
+            case R.id.listofUsers:
+                startActivity(new Intent(HomePage.this, UsersList.class));
         }
         return false;
     }

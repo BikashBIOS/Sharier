@@ -16,8 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Layout.MainPage"
-            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+        <activity android:name=".User.UserProfile"></activity>
+        <activity
+            android:name=".Layout.MainPage"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Fullscreen"
             android:configChanges="keyboardHidden|orientation|screenSize"
